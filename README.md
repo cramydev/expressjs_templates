@@ -1,7 +1,6 @@
 ### CHECK OTHER BRANCHES TO SEE ANOTHER TEMPLATES
 
-[Default template](https://github.com/cramydev/expressjs_templates/tree/default_template){:target="_blank"}
-<a href="https://github.com/cramydev/expressjs_templates/tree/default_template" target="_blank" rel="noopener">Default template</a>
+[Default template](https://github.com/cramydev/expressjs_templates/tree/default_template)
 
 ---
 
