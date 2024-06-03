@@ -1,0 +1,1 @@
+In this folder you can create files per type of module, for example, all routes related to user can be in a file that you can import in routes.js. This is just an example, you can create whatever file as you need to
