@@ -1,41 +1,24 @@
-const { Sequelize } = require('sequelize');
+const mongoose = require('mongoose');
 
-let dialectOptions = {}
+async function dbConnection() {
+	try {
+		const { DB_NAME, DB_HOST, DB_USERNAME, DB_PASSWORD} = process.env
 
-if (Number(process.env.DB_SSL_REQUIRE) === 1) {
-	dialectOptions = {
-		ssl: {
-			require: true,
-			// rejectUnauthorized: false
-		},
-		timezone: "+00:00"
-	}
-} else {
-	dialectOptions = {
-		timezone: "+00:00"
+		const stringConnection = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_NAME}.${DB_HOST}/?retryWrites=true&w=majority&appName=${DB_NAME}`
+
+		await mongoose.connect(stringConnection)
+
+		return {
+			error: false,
+			message: 'Database connection has been established',
+		}
+	} catch(error) {
+		return {
+			error: true,
+			data: error,
+			message: 'Unable to connect to the database',
+		}
 	}
 }
-
-const dbConnection = new Sequelize(
-	process.env.DB_NAME,
-	process.env.DB_USERNAME,
-	process.env.DB_PASSWORD,
-	{
-		host: process.env.DB_HOST,
-		port: process.env.DB_PORT,
-		dialect: process.env.DB_DIALECT,
-		dialectOptions: {
-			...dialectOptions
-		},
-		ssl: false,
-		pool: {
-			max: 5,
-			min: 0,
-			acquire: 60000,
-			idle: 10000
-		},
-		timezone: "+00:00" // for writing to database
-	}
-);
 
 module.exports = dbConnection

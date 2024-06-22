@@ -1,1 +1,1 @@
-This folder is related to Sequelize setup. If you don't use Sequelize ORM in your project, then you can remove this folder or index.js file
+This folder is used to stores the MongoDB Schemmas, it can be used however you want or need to.
